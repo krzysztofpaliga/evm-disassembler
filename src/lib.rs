@@ -83,7 +83,7 @@ pub fn disassemble_bytes(bytes: Vec<u8>) -> Result<Vec<Operation>> {
             Ok((operation, new_offset)) => (operation, new_offset),
             Err(e) => {
                 println!("Stop decoding at offset {offset} due to error : {e}");
-                break;
+                return Err(e);
             }
         };
         operations.push(new_operation);
